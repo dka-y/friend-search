@@ -3,17 +3,17 @@ class FriendGraph:
     def __init__(self):
         self.adj: dict[str, set[str]] = {}
 
-        def add_user(self, user_id: str) -> None:
+    def add_user(self, user_id: str) -> None:
             if user_id not in self.adj:
                 self.adj[user_id] = set()
 
-        def remove_user(self, user_id: str) -> None:
+    def remove_user(self, user_id: str) -> None:
             if user_id in self.adj:
                 for friend_id in list(self.adj[user_id]):
                     self.adj[friend_id].discard(user_id)
                 del self.adj[user_id]
 
-        def add_friendship(self, user_a: str, user_b: str) -> None:
+    def add_friendship(self, user_a: str, user_b: str) -> None:
         
         self.add_user(user_a)
         self.add_user(user_b)
