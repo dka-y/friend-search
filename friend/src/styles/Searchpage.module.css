@@ -1,0 +1,68 @@
+.root {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Desktop sidebar wrapper */
+.sidebarWrap {
+  display: flex;
+  flex-shrink: 0;
+}
+
+/* Mobile topbar wrapper — hidden on desktop */
+.topbarWrap {
+  display: none;
+}
+
+/* ── Mobile breakpoint ───────────────────── */
+@media (max-width: 768px) {
+  .root {
+    flex-direction: column;
+    height: 100dvh; /* use dynamic viewport height on mobile */
+  }
+
+  /* Completely remove sidebar from layout and rendering */
+  .sidebarWrap {
+    display: none !important;
+    width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Show topbar instead */
+  .topbarWrap {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .main {
+    padding: 16px !important;
+    /* Take full remaining height below topbar */
+    flex: 1;
+    min-height: 0;
+  }
+}
+
+/* ── Main content area ───────────────────── */
+.main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 40px 48px;
+  max-width: 760px;
+  min-height: 0; /* prevents flex child from overflowing */
+}
+
+.header { margin-bottom: 24px; }
+.header h1 { font-size: 28px; font-weight: 800; margin-bottom: 5px; }
+.header p  { font-size: 14px; color: var(--text-muted); }
+
+.searchWrap { margin-bottom: 14px; }
+
+.dsaRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.dsaSep { font-size: 12px; color: var(--text-muted); }

@@ -2,7 +2,7 @@ import type { SearchUser } from "../../types";
 import Avatar from "../ui/avatar";
 import Badge from "../ui/badge";
 import Button from "../ui/button";
-import styles from "./UserCard.module.css";
+import styles from "../../styles/Usecard.module.css";
 
 interface UserCardProps {
   user: SearchUser;

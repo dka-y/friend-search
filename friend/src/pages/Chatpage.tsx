@@ -9,7 +9,7 @@ import MessageInput from "../components/chat/MessageInput";
 import Button from "../components/ui/button";
 import Avatar from "../components/ui/avatar";
 import { ToastContainer, useToast } from "../components/ui/toast";
-import styles from "./ChatPage.module.css";
+import styles from "../styles/Chatpage.module.css";
 
 interface ChatPageProps {
   onNavigate: (page: AppPage, userId?: string) => void;

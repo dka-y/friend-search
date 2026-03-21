@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import type { Message } from "../../types";
 import Avatar from "../ui/avatar";
-import styles from "./MessageThread.module.css";
+import styles from "../../styles/Messagethread.module.css";
 
 interface MessageThreadProps {
   messages: Message[];

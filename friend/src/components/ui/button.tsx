@@ -1,5 +1,5 @@
 import { type ButtonHTMLAttributes } from "react";
-import styles from "./Button.module.css";
+import styles from "../../styles/Button.module.css";
 
 type ButtonVariant = "primary" | "secondary" | "ghost" | "danger" | "success";
 type ButtonSize    = "sm" | "md" | "lg";

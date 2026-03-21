@@ -1,6 +1,6 @@
 import Badge from "../ui/badge";
 import Button from "../ui/button";
-import styles from "./HistoryPanel.module.css";
+import styles from "../../styles/Historypanel.module.css";
 
 interface HistoryPanelProps {
   history: string[];

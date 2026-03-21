@@ -1,0 +1,9 @@
+.list { 
+    display: flex; flex-direction: column; gap: 8px; 
+}
+.empty { 
+    padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 14px; 
+}
+.empty strong { 
+    color: var(--text); 
+}

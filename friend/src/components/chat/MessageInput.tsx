@@ -1,5 +1,5 @@
 import { useRef, type FormEvent, type KeyboardEvent } from "react";
-import styles from "./MessageInput.module.css";
+import styles from "../../styles/Messageinput.module.css";
 
 interface MessageInputProps {
   value: string;

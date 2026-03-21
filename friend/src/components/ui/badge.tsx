@@ -1,4 +1,4 @@
-import styles from "./Badge.module.css";
+import styles from "../../styles/Badge.module.css";
 
 type BadgeVariant = "accent" | "success" | "danger" | "muted" | "dsa";
 

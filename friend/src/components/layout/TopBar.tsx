@@ -1,6 +1,6 @@
 import { useAuth } from "../../context/authcontext";
 import Avatar from "../ui/avatar";
-import styles from "./Sidebar.module.css";
+import styles from "../../styles/Sidebar.module.css";
 import type { AppPage, SidebarTab } from "../../types";
 
 interface NavItem {

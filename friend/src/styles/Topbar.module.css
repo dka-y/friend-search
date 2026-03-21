@@ -1,0 +1,154 @@
+/* Navigation Bar Container */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Branding Section */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.logoIcon {
+  font-size: 17px;
+  color: var(--accent);
+}
+
+.logoText {
+  font-family: var(--heading);
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-h);
+  letter-spacing: -0.03em;
+}
+
+/* Scrollable Tab System */
+.tabs {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  overflow-x: auto;
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.tabs::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.tab:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text);
+}
+
+.tab.active {
+  background: var(--accent-bg);
+  color: #e8a85a;
+  border-color: var(--accent-border);
+  font-weight: 600;
+}
+
+.tabBadge {
+  background: var(--accent);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+/* User Actions & Dropdown Menu */
+.avatarBtn {
+  flex-shrink: 0;
+  border-radius: 50%;
+  transition: opacity 0.15s;
+  cursor: pointer;
+}
+
+.avatarBtn:hover {
+  opacity: 0.8;
+}
+
+.menu {
+  position: fixed;
+  top: 56px;
+  right: 12px;
+  background: rgba(20, 16, 30, 0.95);
+  border: 1px solid var(--border-s);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  z-index: 20;
+  min-width: 150px;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+}
+
+.menu button {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 13px;
+  text-align: left;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+
+.menu button:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.menuLogout {
+  color: var(--danger) !important;
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+  .topbar {
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+  .logoText {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .tab {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+}

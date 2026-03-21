@@ -2,7 +2,7 @@ import type { SuggestedUser } from "../../types";
 import Avatar from "../ui/avatar";
 import Badge from "../ui/badge";
 import Button from "../ui/button";
-import styles from "./SuggestionsPanel.module.css";
+import styles from "../../styles/Suggestionpanel.module.css";
 
 interface SuggestionsPanelProps {
   suggestions: SuggestedUser[];

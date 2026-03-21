@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "./Toast.module.css";
+import styles from "../../styles/Toast.module.css";
  
 type ToastVariant = "success" | "danger" | "info";
 

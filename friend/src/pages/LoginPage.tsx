@@ -4,7 +4,7 @@ import { authApi } from "../api/client";
 import type { LoginPayload, RegisterPayload } from "../types";
 import Input from "../components/ui/input";
 import Button from "../components/ui/button";
-import styles from "./LoginPage.module.css";
+import styles from "../styles/Loginpage.module.css";
 
 type Mode = "login" | "register";
 

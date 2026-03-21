@@ -14,7 +14,7 @@ import SuggestionsPanel from "../components/friends/SuggestionsPanel";
 import Badge from "../components/ui/badge";
 import { ToastContainer, useToast } from "../components/ui/toast";
 
-import styles from "./SearchPage.module.css";
+import styles from "../styles/Searchpage.module.css";
 
 interface SearchPageProps {
   onNavigate: (page: AppPage, userId?: string) => void;

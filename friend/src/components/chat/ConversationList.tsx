@@ -1,7 +1,7 @@
 import type { Conversation, User } from "../../types";
 import Avatar from "../ui/avatar";
 import Badge from "../ui/badge";
-import styles from "./ConversationList.module.css";
+import styles from "../../styles/Conversationlist.module.css";
 
 interface ConversationListProps {
   conversations: Conversation[];

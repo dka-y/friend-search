@@ -2,7 +2,7 @@
 
 class SearchHistoryStack:
     def __init__ (self, max_size: int = 20):
-        self._stack = list[str] = []
+        self._stack: list[str] = []
         self.max_size = max_size
     # add search query
     def push( self, query: str) -> None:

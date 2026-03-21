@@ -25,7 +25,7 @@ class Trie:
         if node.is_end:
             results.extend(node.user_ids)
 
-        for child in node.children,values():
+        for child in node.children.values():
             self._collect_all(child, results)
 
         

@@ -2,7 +2,7 @@ import type { FriendRequest } from "../../types";
 import Avatar from "../ui/avatar";
 import Badge from "../ui/badge";
 import Button from "../ui/button";
-import styles from "./RequestsPanel.module.css";
+import styles from "../../styles/Requestpanel.module.css";
 
 interface RequestsPanelProps {
   pending: FriendRequest[];

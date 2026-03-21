@@ -1,6 +1,6 @@
 import type { SearchUser } from "../../types";
 import UserCard from "../friends/UserCard";
-import styles from "./SearchResults.module.css";
+import styles from "../../styles/Searchresults.module.css";
 
 interface SearchResultsProps {
   results: SearchUser[];

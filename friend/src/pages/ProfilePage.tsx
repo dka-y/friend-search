@@ -6,7 +6,7 @@ import Avatar from "../components/ui/avatar";
 import Badge from "../components/ui/badge";
 import Button from "../components/ui/button";
 import { useToast, ToastContainer } from "../components/ui/toast";
-import styles from "./ProfilePage.module.css";
+import styles from "../styles/Profilepage.module.css";
 
 interface ProfilePageProps {
   viewingUserId: string;
