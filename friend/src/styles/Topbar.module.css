@@ -1,80 +1,120 @@
-/* Navigation Bar Container */
+/* ── Slim top header ─────────────────────── */
 .topbar {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 16px;
-  background: rgba(255, 255, 255, 0.05);
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.05);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 10;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-}
-
-/* Branding Section */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 6px;
   flex-shrink: 0;
 }
 
-.logoIcon {
-  font-size: 17px;
-  color: var(--accent);
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
 }
-
+.logoIcon { font-size: 18px; color: var(--accent); }
 .logoText {
   font-family: var(--heading);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 800;
   color: var(--text-h);
   letter-spacing: -0.03em;
 }
 
-/* Scrollable Tab System */
-.tabs {
-  display: flex;
-  gap: 4px;
-  flex: 1;
-  overflow-x: auto;
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
+.avatarBtn {
+  border-radius: 50%;
+  transition: opacity 0.15s;
+  flex-shrink: 0;
 }
+.avatarBtn:hover { opacity: 0.8; }
 
-.tabs::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Chrome/Safari */
+/* ── Dropdown menu ───────────────────────── */
+.menu {
+  position: fixed;
+  top: 58px;
+  right: 12px;
+  background: rgba(18, 14, 28, 0.96);
+  border: 1px solid var(--border-s);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  z-index: 50;
+  min-width: 160px;
+  overflow: hidden;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
 }
+.menu button {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 13px;
+  text-align: left;
+  color: var(--text);
+  transition: background 0.15s;
+}
+.menu button:hover { background: rgba(255,255,255,0.07); }
+.menuLogout { color: var(--danger) !important; }
 
-.tab {
+/* ── Bottom navigation bar ───────────────── */
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
   display: flex;
   align-items: center;
-  gap: 5px;
-  padding: 5px 12px;
-  border-radius: 99px;
-  font-size: 12px;
-  font-weight: 500;
+  justify-content: space-around;
+  padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+  background: rgba(13, 11, 18, 0.88);
+  border-top: 1px solid var(--border);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.navBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
   color: var(--text-muted);
-  white-space: nowrap;
-  transition: background 0.15s, color 0.15s;
-  border: 1px solid transparent;
-  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+  flex: 1;
+  max-width: 72px;
+}
+.navBtn:hover    { color: var(--text); }
+.navBtnActive    { color: #e8a85a !important; }
+
+.navIconWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.tab:hover {
-  background: rgba(255, 255, 255, 0.07);
-  color: var(--text);
+.navIcon {
+  font-size: 18px;
+  line-height: 1;
 }
 
-.tab.active {
-  background: var(--accent-bg);
-  color: #e8a85a;
-  border-color: var(--accent-border);
-  font-weight: 600;
+.navBtnActive .navIcon {
+  /* subtle glow on active icon */
+  filter: drop-shadow(0 0 6px rgba(196,133,58,0.6));
 }
 
-.tabBadge {
+.navBadge {
+  position: absolute;
+  top: -5px;
+  right: -8px;
   background: var(--accent);
   color: #fff;
   font-size: 9px;
@@ -85,70 +125,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 4px;
+  padding: 0 3px;
+  border: 1.5px solid var(--bg);
 }
 
-/* User Actions & Dropdown Menu */
-.avatarBtn {
-  flex-shrink: 0;
-  border-radius: 50%;
-  transition: opacity 0.15s;
-  cursor: pointer;
-}
-
-.avatarBtn:hover {
-  opacity: 0.8;
-}
-
-.menu {
-  position: fixed;
-  top: 56px;
-  right: 12px;
-  background: rgba(20, 16, 30, 0.95);
-  border: 1px solid var(--border-s);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow);
-  z-index: 20;
-  min-width: 150px;
-  overflow: hidden;
-  backdrop-filter: blur(20px);
-}
-
-.menu button {
-  display: block;
-  width: 100%;
-  padding: 10px 16px;
-  font-size: 13px;
-  text-align: left;
-  color: var(--text);
-  background: transparent;
-  border: none;
-  transition: background 0.15s;
-  cursor: pointer;
-}
-
-.menu button:hover {
-  background: rgba(255, 255, 255, 0.07);
-}
-
-.menuLogout {
-  color: var(--danger) !important;
-}
-
-/* Responsive Overrides */
-@media (max-width: 768px) {
-  .topbar {
-    flex-wrap: nowrap;
-    overflow: hidden;
-  }
-  .logoText {
-    display: none;
-  }
-}
-
-@media (max-width: 400px) {
-  .tab {
-    padding: 5px 8px;
-    font-size: 11px;
-  }
+.navLabel {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
