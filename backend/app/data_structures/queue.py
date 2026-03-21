@@ -57,3 +57,52 @@ class FriendRequestQueue:
 
     def __len__( self) -> int:
         return len(self._queue)
+
+
+class MessageQueue:
+
+    MAX_BUFFER = 50  # max messages buffered per conversation in memory
+ 
+    def __init__(self):
+        # conversation_key -> deque of Message (bounded buffer)
+        self._queues: dict[frozenset, deque] = {}
+        # unread counts: (receiver_id, conv_key) -> int
+        self._unread: dict[tuple, int] = {}
+ 
+    def _key(self, user_a: str, user_b: str) -> frozenset:
+        return frozenset({user_a, user_b})
+ 
+    def enqueue(self, message: "Message") -> None:
+        
+        key = self._key(message.sender_id, message.receiver_id)
+        if key not in self._queues:
+            self._queues[key] = deque(maxlen=self.MAX_BUFFER)
+        self._queues[key].append(message)
+        unread_key = (message.receiver_id, key)
+        self._unread[unread_key] = self._unread.get(unread_key, 0) + 1
+ 
+    def peek_latest(self, user_a: str, user_b: str) -> "Message | None":
+        
+        key = self._key(user_a, user_b)
+        q = self._queues.get(key)
+        return q[-1] if q else None
+ 
+    def mark_read(self, reader_id: str, user_a: str, user_b: str) -> None:
+      
+        key = self._key(user_a, user_b)
+        self._unread[(reader_id, key)] = 0
+ 
+    def unread_count(self, receiver_id: str, user_a: str, user_b: str) -> int:
+        
+        key = self._key(user_a, user_b)
+        return self._unread.get((receiver_id, key), 0)
+ 
+    def total_unread_for_user(self, user_id: str) -> int:
+        
+        return sum(v for (uid, _), v in self._unread.items() if uid == user_id)
+ 
+    def get_conversation_keys(self, user_id: str) -> list:
+        return [k for k in self._queues if user_id in k]
+ 
+    def clear_buffer(self, user_a: str, user_b: str) -> None:
+        self._queues.pop(self._key(user_a, user_b), None)
