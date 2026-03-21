@@ -59,6 +59,26 @@ class FriendRequestQueue:
         return len(self._queue)
 
 
+# message 
+@dataclass
+class Message:
+    """A single chat message."""
+    id:          str
+    sender_id:   str
+    receiver_id: str
+    content:     str
+    timestamp:   str = field(default_factory=lambda: datetime.utcnow().isoformat())
+    read:        bool = False
+ 
+    def to_dict(self) -> dict:
+        return {
+            "id":          self.id,
+            "sender_id":   self.sender_id,
+            "receiver_id": self.receiver_id,
+            "content":     self.content,
+            "timestamp":   self.timestamp,
+            "read":        self.read,
+        }
 class MessageQueue:
 
     MAX_BUFFER = 50  # max messages buffered per conversation in memory
