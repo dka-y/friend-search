@@ -9,6 +9,7 @@ export interface User{
   avatar_url: string;
   created_at: string;
   friend_count?: number;
+  is_friend?: boolean;
 }
 
 export interface SearchUser extends User{
