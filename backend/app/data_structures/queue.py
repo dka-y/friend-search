@@ -30,7 +30,7 @@ class FriendRequestQueue:
     def dequeue (self) -> FriendRequest | None:
         while self._queue:
             req = self._queue.popleft()
-             self._index.pop((req.from_user, req.to_user), None)
+            self._index.pop((req.from_user, req.to_user), None)
             return req
         return None
     
@@ -39,7 +39,7 @@ class FriendRequestQueue:
     
 
     def get_pending_for_user(self, user_id: str) -> list[FriendRequest]:
-        return [r for r in self._queue if r.to_user == user_id and r.status = "pending"]
+        return [r for r in self._queue if r.to_user == user_id and r.status == "pending"]
 
     def get_sent_by_user (self, user_id: str) -> list[FriendRequest]:
         return [r for r in self._queue if r.from_user == user_id]

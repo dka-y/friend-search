@@ -12,7 +12,7 @@ class Trie:
     def insert(self, name:str, user_id:str) -> None:
         node = self.root
         for char in name.lower():
-            if char not node.children:
+            if char not in node.children:
                 node.children[char] = TrieNode()
             node = node.children[char]
 

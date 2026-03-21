@@ -53,6 +53,6 @@ def rank_search_results(candidates: list[dict], mutual_counts: dict[str, int], k
             "display_name": r.display_name,
             "mutual_friends": r.score
         }
-        for r in 
+        for r in ranked
 
     ]

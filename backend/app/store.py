@@ -9,7 +9,7 @@ from app.db import (
     db_insert_request, db_delete_request,
     db_get_pending_requests_for, db_get_sent_requests_by, db_request_exists,
 )
-from app.data_structures.trie import Trie
+from app.data_structures.Trie import Trie
 from app.data_structures.graph import FriendGraph
 from app.data_structures.hashmap import User
 from app.data_structures.stack import SearchHistoryStack
@@ -34,7 +34,7 @@ class AppStore:
         self.message_queue = MessageQueue()
         self._search_histories: dict[str, SearchHistoryStack] = {}
 
-        def bootstrap(self) -> None:
+    def bootstrap(self) -> None:
         # Call once at startup — init DB, rebuild in-memory structures.
         init_db()
         self._load_users_into_trie()
@@ -91,7 +91,7 @@ class AppStore:
 
 
     # user registration
-     def register_user(self, username: str, display_name: str, email: str, bio: str = "", password_hash: str = None) -> User:
+    def register_user(self, username: str, display_name: str, email: str, bio: str = "", password_hash: str = None) -> User:
         if db_username_exists(username):
             raise ValueError(f"Username '{username}' already taken.")
  
@@ -145,7 +145,7 @@ class AppStore:
         return self.graph.get_friends(user_id)
 
 
-     def send_request(self, from_user: str, to_user: str) -> FriendRequest | None:
+    def send_request(self, from_user: str, to_user: str) -> FriendRequest | None:
         ts = datetime.utcnow().isoformat()
         inserted = db_insert_request(from_user, to_user, ts)
         if not inserted:

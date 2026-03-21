@@ -72,7 +72,7 @@ def init_db() -> None:
 
 def db_insert_user (user_id, username, display_name, email, bio, created_at, password_hash=None) -> None:
     with get_db() as conn:
-        con.execute(
+        conn.execute(
             "INSERT INTO users (id, username, display_name, email, bio, created_at, password_hash) VALUES (?,?,?,?,?,?,?)",
             (user_id, username.lower(), display_name, email, bio, created_at, password_hash)
         )
@@ -83,7 +83,7 @@ def db_get_user_by_id(user_id: str) -> sqlite3.Row | None:
         return conn.execute("SELECT * FROM users WHERE id = ?", (user_id,) ). fetchone()
 
 def db_get_user_by_username(username: str) -> sqlite3.Row | None:
-    with get_db() ass conn:
+    with get_db() as conn:
         return conn.execute("SELECT * FROM users WHERE username = ?", (username.lower(),)).fetchone()
 
 
@@ -115,7 +115,7 @@ def db_delete_user(user_id: str) -> None:
 def db_username_exists(username: str) -> bool:
     with get_db() as conn:
         row = conn.execute("SELECT 1 FROM users WHERE username = ?", (username.lower(),)).fetchone()
-        return row is not 
+        return row is not None
         
 # friendship queries 
 
