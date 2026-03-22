@@ -113,7 +113,51 @@ body::after {
   pointer-events: none;
   z-index: 0;
 }
+@keyframes orbFloat1 {
+  0%   { transform: translate(0px,   0px)   scale(1);    }
+  33%  { transform: translate(40px, -30px)  scale(1.05); }
+  66%  { transform: translate(-20px, 20px)  scale(0.97); }
+  100% { transform: translate(0px,   0px)   scale(1);    }
+}
 
+@keyframes orbFloat2 {
+  0%   { transform: translate(0px,  0px)   scale(1);    }
+  33%  { transform: translate(-30px, 40px) scale(0.95); }
+  66%  { transform: translate(20px, -20px) scale(1.04); }
+  100% { transform: translate(0px,  0px)   scale(1);    }
+}
+
+@keyframes orbFloat3 {
+  0%   { transform: translate(0px,  0px)  scale(1);    }
+  50%  { transform: translate(30px, 30px) scale(1.06); }
+  100% { transform: translate(0px,  0px)  scale(1);    }
+}
+body::before {
+  /* purple orb — existing styles stay, just add: */
+  animation: orbFloat1 12s ease-in-out infinite;
+}
+
+body::after {
+  /* blue orb — existing styles stay, just add: */
+  animation: orbFloat2 15s ease-in-out infinite;
+}
+
+.orb-amber {
+  /* amber orb — existing styles stay, just add: */
+  animation: orbFloat3 10s ease-in-out infinite;
+}
+body::before,
+body::after,
+.orb-amber {
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after,
+  .orb-amber {
+    animation: none;
+  }
+}
 /* ─────────────────────────────────────────────────────────────────────────────
    Scrollbar
 ───────────────────────────────────────────────────────────────────────────── */
