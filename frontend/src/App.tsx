@@ -11,7 +11,7 @@ export default function App() {
   const { user, loading } = useAuth();
   const [page, setPage]             = useState<AppPage>("login");
   const [viewingUserId, setViewingUserId] = useState<string>("");
-
+  // state routing
   const navigateTo = (p: AppPage, userId?: string) => {
     if (userId) setViewingUserId(userId);
     setPage(p);
