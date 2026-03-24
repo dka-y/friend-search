@@ -44,7 +44,7 @@ export default function Toast({message, variant = "success", duration = 3000, on
 }
  
 
-// manages list of toast
+// manages toast
 export interface ToastItem {
   id: number;
   message: string;
