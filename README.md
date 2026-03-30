@@ -44,17 +44,5 @@ Navigate to 'http://localhost:8080'
 
 ## Project Structure
 ```
-FriendFinder/
-├── app/
-│   ├── data/
-│   │   └── friends.js      # Stores the user data array
-│   ├── public/
-│   │   ├── home.html       # Landing page
-│   │   └── survey.html     # Survey interface
-│   └── routing/
-│       ├── apiRoutes.js    # API data and logic
-│       └── htmlRoutes.js   # Page navigation
-├── node_modules/           # Dependencies
-├── package.json            # Project metadata
-└── server.js               # Entry point for the Express server
+
 ```
