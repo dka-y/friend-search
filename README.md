@@ -1,48 +1,77 @@
-# FriendFinder
+# Friend Search
 
-## ​Find Your Most Compatible Match
-​FriendFinder is a full-stack web application that pairs users based on their responses to a personality survey. It uses a custom matching algorithm to compare user scores and find the individual with the lowest total difference in responses.
+A full-stack friend discovery / social matching web application currently being built with a modern React frontend and a Flask backend.
 
-## Features
-- ​Interactive Survey: A 10-question survey using a 5-point Likert scale (Strongly Disagree to Strongly Agree).
-- ​Real-time Matching: An algorithm that calculates compatibility instantly upon submission.
-- ​Responsive UI: Built with Bootstrap to ensure the experience is seamless on mobile, tablet, and desktop.
-- ​RESTful API: Provides endpoints to view the complete list of potential friends and add new ones.
+## About the Project
 
-## Tech Stack
-​Frontend: HTML5, CSS3, Bootstrap, jQuery. 
-Backend: Node.js, Express.js  
-​Deployment: Heroku
-​
-## The Matching Logic
-​Compatibility is determined by calculating the Total Difference between the current user’s scores and every user currently stored in the database.  
-​Each answer is converted into an integer (1 to 5).  
-​The absolute difference for each question is calculated: |UserA_q - UserB_q|.  
-​The differences are summed into a total score.  
-​The person with the lowest total difference is returned as the "Best Match.". 
+**Friend Search** is a full-stack web application intended to help users discover and connect with other people based on searchable profile data and account-based interactions.
 
-## Installation & Setup
-To run this project locally, follow these steps:
-1. Clone the repository
-```
-git clone https://github.com/dka-y/friend-search.git
-```
-2. Navigate to the directory
-```
-cd friend-search
-```
-3. Install the dependencies
-```
-npm install
-```
-4. Start the server
-```
-node server.js
-```
-5. Open the it in your browser  
-Navigate to 'http://localhost:8080'
+At its current stage, the repository is structured as a **modern frontend + API backend architecture**:
+
+- **Frontend:** built with **React**, **TypeScript**, and **Vite**
+- **Backend:** built with **Flask**
+- **Authentication support:** includes **bcrypt** for password hashing and **JWT** for token-based auth
+- **Database:** includes a local **SQLite database file** (`friendsearch.db`)
+- **CORS enabled:** frontend and backend are prepared to communicate across origins during development
+
+## Current Project Highlights
+- **Modern React Frontend**
+  - Built with **React 19**, **TypeScript**, and **Vite**
+  - Configured with ESLint for code quality
+  - Ready for fast local development and production builds
+
+- **Python Flask Backend**
+  - Lightweight API server built with **Flask**
+  - Runs locally on **port 5000**
+
+- **Authentication Foundations**
+  - **bcrypt** included for secure password hashing
+  - **PyJWT** included for token-based authentication
+
+- **Cross-Origin API Support**
+  - **Flask-CORS** is installed, allowing frontend ↔ backend communication during development
+
+- **Bundled Local Database**
+  - Includes an SQLite database file: `friendsearch.db`
+
+- **Demo Data Seeding**
+  - The backend startup script calls `seed_demo_data()` before launching the app
+
+##  Tech Stack
+
+### Frontend
+- **React 19**
+- **TypeScript**
+- **Vite**
+- **ESLint**
+
+### Backend
+- **Python**
+- **Flask**
+- **Flask-CORS**
+- **bcrypt**
+- **PyJWT**
+
+### Data Layer
+- **SQLite** (`friendsearch.db`)
 
 ## Project Structure
-```
 
-```
+```bash
+friend-search/
+│
+├── backend/
+│   ├── app/                # Flask application package
+│   ├── friendsearch.db     # Local SQLite database
+│   ├── Requirements.txt    # Python dependencies
+│   ├── run.py              # Backend entry point
+│   └── README.md
+│
+├── frontend/
+│   ├── public/             # Static assets
+│   ├── src/                # React source code
+│   ├── package.json        # Frontend dependencies and scripts
+│   ├── vite.config.ts      # Vite configuration
+│   └── README.md
+│
+└── README.md
