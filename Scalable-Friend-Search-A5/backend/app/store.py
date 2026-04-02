@@ -1,5 +1,5 @@
 from datetime import datetime
-from app.db import (
+from FriendSearch1.backend.app.db import (
     init_db,
     db_insert_user, db_get_user_by_id, db_get_user_by_username,
     db_get_all_users, db_get_users_by_ids, db_update_bio, db_delete_user,
@@ -9,11 +9,11 @@ from app.db import (
     db_insert_request, db_delete_request,
     db_get_pending_requests_for, db_get_sent_requests_by, db_request_exists,
 )
-from app.data_structures.Trie import Trie
-from app.data_structures.graph import FriendGraph
-from app.data_structures.hashmap import User
-from app.data_structures.stack import SearchHistoryStack
-from app.data_structures.queue import FriendRequestQueue, FriendRequest, MessageQueue
+from FriendSearch1.backend.app.data_structures.Trie import Trie
+from FriendSearch1.backend.app.data_structures.graph import FriendGraph
+from FriendSearch1.backend.app.data_structures.hashmap import User
+from FriendSearch1.backend.app.data_structures.stack import SearchHistoryStack
+from FriendSearch1.backend.app.data_structures.queue import FriendRequestQueue, FriendRequest, MessageQueue
 
 def _row_to_user(row) -> User:
     return User(
@@ -57,7 +57,7 @@ class AppStore:
         print(f"[store] Loaded {len(rows)} friendships into Graph.")
  
     def _load_requests_into_queue(self) -> None:
-        from app.db import get_db
+        from FriendSearch1.backend.app.db import get_db
         with get_db() as conn:
             rows = conn.execute(
                 "SELECT * FROM friend_requests WHERE status='pending' ORDER BY created_at"

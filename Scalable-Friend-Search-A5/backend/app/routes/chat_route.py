@@ -1,14 +1,14 @@
 import uuid
 from datetime import datetime
 from flask import Blueprint, request, jsonify
-from app.store import store
-from app.auth import require_auth
-from app.db import (
+from FriendSearch1.backend.app.store import store
+from FriendSearch1.backend.app.auth import require_auth
+from FriendSearch1.backend.app.db import (
     db_insert_message, db_get_conversation, db_get_conversations_for_user,
     db_mark_messages_read, db_unread_count, db_total_unread,
     db_get_messages_since,
 )
-from app.data_structures.queue import Message
+from FriendSearch1.backend.app.data_structures.queue import Message
  
 chat_bp = Blueprint("chat", __name__)
  

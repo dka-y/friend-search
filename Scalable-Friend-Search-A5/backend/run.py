@@ -1,5 +1,5 @@
 
-from app.init import create_app, seed_demo_data
+from FriendSearch1.backend.app.init import create_app, seed_demo_data
 
 app = create_app()
 

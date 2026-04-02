@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from app.store import store
-from app.auth import require_auth
+from FriendSearch1.backend.app.store import store
+from FriendSearch1.backend.app.auth import require_auth
 
 users_bp = Blueprint("users", __name__)
 

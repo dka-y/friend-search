@@ -1,65 +1,86 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConnectGraph | Search & Social</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ConnectGraph | A1 — Social Graph</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <h1>ConnectGraph</h1>
-            <div id="user-profile">
-                <span>User: <strong>Alice</strong></span>
-                <div class="stats-bar">
-                    <span class="stat-badge">Following: <strong id="my-following-count">0</strong></span>
-                    <span class="stat-badge">Followers: <strong id="my-follower-count">0</strong></span>
-                </div>
-            </div>
-            <button id="reset-btn" onclick="resetDemo()">Reset Demo</button>
+<div class="app-wrapper">
+
+  <header>
+    <div class="header-inner">
+      <div class="logo"><span class="logo-dot"></span>ConnectGraph</div>
+      <div class="stat-chip"><span class="label">user</span><strong>Alice</strong></div>
+      <div class="stat-chip"><span class="label">following</span><strong id="my-following-count">0</strong></div>
+      <div class="stat-chip"><span class="label">followers</span><strong id="my-follower-count">0</strong></div>
+      <div style="margin-left:auto;display:flex;gap:8px;">
+        <button class="btn-undo" onclick="undoLast()">↩ Undo</button>
+        <button class="btn-header" onclick="resetDemo()">Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="main">
+    <div>
+      <div class="graph-viz-wrap">
+        <div class="graph-viz-header">
+          <span class="section-label" style="margin:0">Live Graph</span>
+          <span class="algo-badge">Adjacency List</span>
         </div>
-    </header>
+        <canvas id="graph-canvas"></canvas>
+      </div>
 
-    <main class="dashboard">
-        <section class="card-section">
-            <div class="search-area">
-                <input type="text" id="user-search" placeholder="Search users..." oninput="handleSearch(this.value)">
-            </div>
-            
-            <div id="user-list">
-                {% for user in users %}
-                    {% if user != "Alice" %}
-                    <div class="user-card" id="card-{{ user }}">
-                        <div class="user-info">
-                            <span class="username">{{ user }}</span>
-                            <span class="follower-count" id="followers-{{ user }}">0 followers</span>
-                        </div>
-                        
-                        {% if user in following %}
-                            <button class="follow-btn unfollow-state" data-user="{{ user }}">Unfollow</button>
-                        {% else %}
-                            <button class="follow-btn" data-user="{{ user }}">Follow</button>
-                        {% endif %}
-                    </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </section>
+      <div class="search-wrap">
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="10.5" y1="10.5" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <input type="text" id="user-search" class="search-input" placeholder="Search users… (Trie — O(L))" oninput="handleSearch(this.value)" autocomplete="off">
+      </div>
 
-        <section class="sidebar">
-            <div class="recommendation-box">
-                <h3>People You May Know</h3>
-                <p class="logic-hint">Friends-of-Friends</p>
-                <ul id="rec-list"></ul>
-            </div>
-            
-            <div class="following-box">
-                <h3>Your Network</h3>
-                <ul id="following-list"></ul>
-            </div>
-        </section>
-    </main>
+      <span class="section-label">All Users</span>
+      <div id="user-grid"></div>
+    </div>
 
-    <script src="{{ url_for('static', filename='js/social.js') }}"></script>
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-card-header">
+          <span class="sidebar-card-title">People You May Know</span>
+          <span class="algo-badge">BFS + Heap</span>
+        </div>
+        <ul id="rec-list" class="sidebar-list"><li class="empty-msg">Loading…</li></ul>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-header">
+          <span class="sidebar-card-title">Your Network</span>
+          <span class="algo-badge">Hash Set</span>
+        </div>
+        <ul id="following-list" class="sidebar-list"><li class="empty-msg">Not following anyone.</li></ul>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-header">
+          <span class="sidebar-card-title">Action History</span>
+          <span class="algo-badge">Stack</span>
+        </div>
+        <div id="history-list" class="history-list"><div class="empty-msg">No actions yet.</div></div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-header"><span class="sidebar-card-title">Complexity (Big-O)</span></div>
+        <div id="complexity-grid" class="complexity-grid"></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="social.js"></script>
 </body>
 </html>

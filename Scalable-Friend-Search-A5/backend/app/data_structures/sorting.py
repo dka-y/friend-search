@@ -19,12 +19,12 @@ def _merge(left: list, right: list, key) -> list:
             lv = key (left[i] if key else left[i])
             rv = key(right[j] if key else right[j])
 
-        if lv <= rv:
-                result.append(left[i])
-                i+=1
-        else:
-                result.append(right[j])
-                j+=1
+            if lv <= rv:
+                    result.append(left[i])
+                    i+=1
+            else:
+                    result.append(right[j])
+                    j+=1
 
     result.extend(left[i:])
     result.extend(right[j:])

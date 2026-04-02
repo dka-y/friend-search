@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from app.store import store
-from app.auth import hash_password, verify_password, generate_token
+from FriendSearch1.backend.app.store import store
+from FriendSearch1.backend.app.auth import hash_password, verify_password, generate_token
 
 auth_bp = Blueprint("auth", __name__)
 
@@ -57,7 +57,7 @@ def login():
         return jsonify({"error": "Invalid username or password"}), 401
  
     # Fetch password hash from DB
-    from app.db import db_get_password_hash
+    from FriendSearch1.backend.app.db import db_get_password_hash
     stored_hash = db_get_password_hash(user.id)
     if not stored_hash:
         return jsonify({"error": "Account has no password set. Contact support."}), 401
@@ -83,7 +83,7 @@ def me():
     # Validates a token and returns the current user.
     # Used by frontend on page load to restore session.
     
-    from app.auth import require_auth, decode_token
+    from FriendSearch1.backend.app.auth import require_auth, decode_token
     auth_header = request.headers.get("Authorization", "")
     if not auth_header.startswith("Bearer "):
         return jsonify({"error": "Not authenticated"}), 401
