@@ -30,7 +30,7 @@ export default function SearchPage({ onNavigate }: SearchPageProps) {
   const [history, setHistory]   = useState<string[]>([]);
   const debouncedQuery          = useDebounce(query, 280);
 
-  // ── Sidebar data ─────────────────────────────────────────────────────────────
+  // ── Sidebar data 
   const [pending, setPending]         = useState<FriendRequest[]>([]);
   const [suggestions, setSuggestions] = useState<SuggestedUser[]>([]);
   const [activeTab, setActiveTab]     = useState<SidebarTab>("search");
@@ -75,7 +75,7 @@ export default function SearchPage({ onNavigate }: SearchPageProps) {
     searchApi.getHistory().then((h) => setHistory(h.history)).catch(() => {});
   }, []);
 
-  // ── Actions ──────────────────────────────────────────────────────────────────
+  // ── Actions ─────
   const handleSendRequest = async (toUserId: string) => {
     try {
       await friendsApi.sendRequest(toUserId);
