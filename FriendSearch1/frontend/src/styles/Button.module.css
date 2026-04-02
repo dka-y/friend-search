@@ -1,0 +1,99 @@
+/* Base Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: var(--sans);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: 
+    opacity 0.15s, 
+    transform 0.1s, 
+    background 0.15s, 
+    border-color 0.15s, 
+    box-shadow 0.15s;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+/* Button States */
+.btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Sizing Utilities */
+.sm { padding: 5px 13px;  font-size: 12px; }
+.md { padding: 8px 18px;  font-size: 13px; }
+.lg { padding: 11px 26px; font-size: 15px; }
+
+.fullWidth {
+  width: 100%;
+}
+
+/* Color Variants: Primary */
+.primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: rgba(196, 133, 58, 0.5);
+  box-shadow: 0 4px 16px rgba(196, 133, 58, 0.25);
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+  box-shadow: 0 6px 24px rgba(196, 133, 58, 0.35);
+}
+
+/* Color Variants: Secondary */
+.secondary {
+  background: var(--accent-bg);
+  color: #e8a85a;
+  border-color: var(--accent-border);
+}
+
+.secondary:hover:not(:disabled) {
+  background: rgba(196, 133, 58, 0.22);
+}
+
+/* Color Variants: Ghost/Glass */
+.ghost {
+  background: var(--surface);
+  color: var(--text-muted);
+  border-color: var(--border);
+  backdrop-filter: blur(10px);
+}
+
+.ghost:hover:not(:disabled) {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--border-s);
+}
+
+/* Color Variants: Danger */
+.danger {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border-color: var(--danger-border);
+}
+
+.danger:hover:not(:disabled) {
+  background: rgba(248, 113, 113, 0.2);
+}
+
+/* Color Variants: Success */
+.success {
+  background: var(--success-bg);
+  color: var(--success);
+  border-color: var(--success-border);
+}
+
+.success:hover:not(:disabled) {
+  background: rgba(74, 222, 128, 0.2);
+}
