@@ -6,16 +6,16 @@ def create_app() -> Flask:
     app = Flask(__name__)
     CORS(app)
  
-    from app.store import store
-    from app.db import init_chat_db
+    from FriendSearch1.backend.app.store import store
+    from FriendSearch1.backend.app.db import init_chat_db
     store.bootstrap()
     init_chat_db()
  
-    from app.routes.auth_route import auth_bp
-    from app.routes.Users import users_bp
-    from app.routes.friends_route import friends_bp
-    from app.routes.search_route import search_bp
-    from app.routes.chat_route import chat_bp
+    from FriendSearch1.backend.app.routes.auth_route import auth_bp
+    from FriendSearch1.backend.app.routes.Users import users_bp
+    from FriendSearch1.backend.app.routes.friends_route import friends_bp
+    from FriendSearch1.backend.app.routes.search_route import search_bp
+    from FriendSearch1.backend.app.routes.chat_route import chat_bp
  
     app.register_blueprint(auth_bp,    url_prefix="/api/auth")
     app.register_blueprint(users_bp,   url_prefix="/api/users")
@@ -25,7 +25,7 @@ def create_app() -> Flask:
  
     @app.route("/api/health")
     def health():
-        from app.db import get_db
+        from FriendSearch1.backend.app.db import get_db
         with get_db() as conn:
             user_count = conn.execute("SELECT COUNT(*) FROM users").fetchone()[0]
             msg_count  = conn.execute("SELECT COUNT(*) FROM messages").fetchone()[0]
@@ -36,14 +36,14 @@ def create_app() -> Flask:
  
 def seed_demo_data():
     """Seed demo users + friendships — skips if already seeded."""
-    from app.store import store
-    from app.db import db_get_all_users, db_set_password_hash
-    from app.auth import hash_password
+    from FriendSearch1.backend.app.store import store
+    from FriendSearch1.backend.app.db import db_get_all_users, db_set_password_hash
+    from FriendSearch1.backend.app.auth import hash_password
  
     if db_get_all_users():
         # Users exist — make sure they all have passwords set
         users = db_get_all_users()
-        from app.db import db_get_password_hash
+        from FriendSearch1.backend.app.db import db_get_password_hash
         needs_password = [u for u in users if not db_get_password_hash(u["id"])]
         if needs_password:
             demo_hash = hash_password("demo1234")

@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConnectGraph | Search & Social</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>ConnectGraph</h1>
+            <div id="user-profile">
+                <span>User: <strong>Alice</strong></span>
+                <div class="stats-bar">
+                    <span class="stat-badge">Following: <strong id="my-following-count">0</strong></span>
+                    <span class="stat-badge">Followers: <strong id="my-follower-count">0</strong></span>
+                </div>
+            </div>
+            <button id="reset-btn" onclick="resetDemo()">Reset Demo</button>
+        </div>
+    </header>
+
+    <main class="dashboard">
+        <section class="card-section">
+            <div class="search-area">
+                <input type="text" id="user-search" placeholder="Search users..." oninput="handleSearch(this.value)">
+            </div>
+            
+            <div id="user-list">
+                {% for user in users %}
+                    {% if user != "Alice" %}
+                    <div class="user-card" id="card-{{ user }}">
+                        <div class="user-info">
+                            <span class="username">{{ user }}</span>
+                            <span class="follower-count" id="followers-{{ user }}">0 followers</span>
+                        </div>
+                        
+                        {% if user in following %}
+                            <button class="follow-btn unfollow-state" data-user="{{ user }}">Unfollow</button>
+                        {% else %}
+                            <button class="follow-btn" data-user="{{ user }}">Follow</button>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="sidebar">
+            <div class="recommendation-box">
+                <h3>People You May Know</h3>
+                <p class="logic-hint">Friends-of-Friends</p>
+                <ul id="rec-list"></ul>
+            </div>
+            
+            <div class="following-box">
+                <h3>Your Network</h3>
+                <ul id="following-list"></ul>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/social.js') }}"></script>
+</body>
+</html>

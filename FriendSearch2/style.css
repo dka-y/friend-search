@@ -1,0 +1,193 @@
+/* --- Global Styles --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+    color: #1c1e21;
+}
+
+/* --- Header & Navigation --- */
+header {
+    background: white;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#user-profile {
+    display: flex;
+    flex-direction: column;
+}
+
+.stats-bar {
+    margin-top: 8px;
+}
+
+.stat-badge {
+    background: #e4e6eb;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-right: 8px;
+    color: #4b4f56;
+}
+
+#reset-btn {
+    background-color: #f02849;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#reset-btn:hover {
+    background-color: #d02241;
+}
+
+/* --- Dashboard Grid Layout --- */
+.dashboard {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* 66% Main, 33% Sidebar */
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Main Section: User Discovery --- */
+.card-section {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Trie Search Input */
+.search-area input {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e4e6eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.search-area input:focus {
+    outline: none;
+    border-color: #1877f2;
+    box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+}
+
+/* Individual User Cards */
+.user-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #f0f2f5;
+    transition: transform 0.1s;
+}
+
+.user-card:hover {
+    background-color: #fcfcfc;
+}
+
+.username {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #050505;
+}
+
+.follower-count {
+    display: block;
+    font-size: 0.85rem;
+    color: #65676b;
+    margin-top: 2px;
+}
+
+/* Base button style (Default: Follow) */
+.follow-btn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    min-width: 100px;
+    background-color: #1877f2;
+    color: white;
+    transition: background 0.2s;
+}
+
+.follow-btn.unfollow-state {
+    background-color: #dc3545; /* Consistent Red */
+}
+
+.follow-btn:hover {
+    filter: brightness(0.9);
+}
+
+/* --- Sidebar: Recommendations & Following --- */
+.recommendation-box, .following-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 25px;
+}
+
+h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: #65676b;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+#rec-list, #following-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0 0;
+}
+
+#rec-list li {
+    background: #f0f7ff;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 5px solid #1877f2;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+#following-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f2f5;
+    color: #1c1e21;
+    font-weight: 500;
+}
+
+#following-list li:last-child {
+    border-bottom: none;
+}
+
+/* Responsive Tweak */
+@media (max-width: 850px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+}
